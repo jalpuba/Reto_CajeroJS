@@ -1,0 +1,75 @@
+*{
+    background-color: whitesmoke;
+}
+
+div{
+    background-color: rgba(14, 106, 226, 0.5);
+    width: 50%;
+    border: solid 1px black;
+}
+
+label{  
+    background-color: bisque;
+    margin-left: 15%;
+
+}
+
+#login button{
+    border-radius: 20%;
+    color: white;
+    background-color: rgb(129, 134, 48);
+    align-content: center;
+    margin-left: 10%;
+}
+
+#login button:hover{
+    color: black;
+    background-color: blueviolet;
+    transform: scale(1.5);
+    transition: 3s;
+}
+
+.consultar{
+    border-radius: 20%;
+    color: white;
+    background-color: rgb(129, 134, 48);
+    align-content: center;
+    
+}
+
+.consultar:hover{
+    color: black;
+    background-color: blueviolet;
+    transform: scale(1.5);
+    transition: 3s;
+}
+
+.cerrar{
+	margin: 20px auto;
+	border-radius: 4%;
+	padding: 10px 24px;
+	font-size: 26px;
+	position: relative;
+	&::before{
+		transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 0.5);
+		content: '';
+		width: 50%;
+		height: 100%;
+		background: rgba(48, 1, 1, 0.4);
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	& .cerrar-text{
+		color: white;
+        mix-blend-mode: difference;
+	}
+	&:hover{
+		&::before{
+			background: black;
+            background: transparent;
+			width: 100%;
+		}
+	}
+}	
