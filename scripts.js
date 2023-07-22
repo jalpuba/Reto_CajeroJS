@@ -1,10 +1,12 @@
+//clase padre para cada cuenta 
+
 class Cuenta {
   constructor(nombre, saldo, password) {
     this.nombre = nombre;
     this.saldo = saldo;
     this.password = password;
   }
-  
+  //validador de contraseñas
   validarPassword(password) {
     return password === this.password;
   }
@@ -12,7 +14,7 @@ class Cuenta {
   consultarSaldo() {
     return this.saldo;
   }
-  
+  //ingreso de monto con condicional de saldo maximo
   ingresarMonto(monto) {
     if (this.saldo + monto > 990) {
       return false;
@@ -21,7 +23,7 @@ class Cuenta {
       return true;
     }
   }
-  
+  //retiro de monto con condicional de saldo minimo
   retirarMonto(monto) {
     if (this.saldo - monto < 10) {
       return false;
@@ -31,7 +33,7 @@ class Cuenta {
     }
   }
 }
-
+//objetos cuentas ---instanciando Cuenta
 var cuentas = [
 new Cuenta("Pepito", 200, "1234"),
 new Cuenta("Maria", 290, "9871"),
@@ -39,6 +41,7 @@ new Cuenta("Jose", 67, "5285")
 ];
 
 var cuentaActiva = null;
+//validaciones de inicio de sesion 
 
 function iniciarSesion() {
 var nombre = document.getElementById("nombre").value;
@@ -311,187 +314,6 @@ class Cuenta {
   
   cajero();
 
-  //********************************************************************************************** */
-/*class Cuenta {
-    constructor(nombre, saldo, password) {
-      this.nombre = nombre;
-      this.saldo = saldo;
-      this.password = password;
-    }
-    
-    validarPassword(password) {
-      return password === this.password;
-    }
-    
-    consultarSaldo() {
-      return this.saldo;
-    }
-    
-    ingresarMonto(monto) {
-      if (this.saldo + monto > 990) {
-        return false;
-      } else {
-        this.saldo += monto;
-        return true;
-      }
-    }
-    
-    retirarMonto(monto) {
-      if (this.saldo - monto < 10) {
-        return false;
-      } else {
-        this.saldo -= monto;
-        return true;
-      }
-    }
-  }
-  
-  var cuentas = [
-    new Cuenta("Pepito", 200, "1234"),
-    new Cuenta("Maria", 290, "9871"),
-    new Cuenta("Jose", 67, "5285")
-  ];
-  
-  function cajero() {
-    var cuentaSeleccionada = prompt("Ingresa el nombre de la cuenta con la que deseas interactuar (Pepito, Maria, Jose)");
-    var cuenta = cuentas.find(cuenta => cuenta.nombre === cuentaSeleccionada);
-    
-    if (!cuenta) {
-      alert("Cuenta no encontrada");
-      return;
-    }
-    
-    var password = prompt("Ingresa el password de la cuenta");
-    
-    if (!cuenta.validarPassword(password)) {
-      alert("Password incorrecto");
-      return;
-    }
-    
-    var continuar = true;
-    
-    while (continuar) {
-      var opcion = prompt("Selecciona una opción:\n1. Consultar saldo\n2. Ingresar monto\n3. Retirar monto\n4. Salir");
-      
-      switch(opcion) {
-        case "1":
-          alert("Tu saldo actual es de $" + cuenta.consultarSaldo());
-          break;
-        case "2":
-          var monto = parseFloat(prompt("Ingresa el monto a ingresar"));
-          if (!cuenta.ingresarMonto(monto)) {
-            alert("No puedes tener más de $990 en tu cuenta");
-          } else {
-            alert("Has ingresado $" + monto + ". Tu nuevo saldo es de $" + cuenta.consultarSaldo());
-          }
-          break;
-        case "3":
-          var monto = parseFloat(prompt("Ingresa el monto a retirar"));
-          if (!cuenta.retirarMonto(monto)) {
-            alert("No puedes tener menos de $10 en tu cuenta");
-          } else {
-            alert("Has retirado $" + monto + ". Tu nuevo saldo es de $" + cuenta.consultarSaldo());
-          }
-          break;
-        case "4":
-          continuar = false;
-          break;
-        default:
-          alert("Opción inválida");
-          break;
-      }
-    }
-  }
-  
-  cajero();*/
-  //*********************************************************************************************** */
-
-/*class Cuenta {
-    constructor(nombre, saldo, password) {
-      this.nombre = nombre;
-      this.saldo = saldo;
-      this.password = password;
-    }
-    
-    validarPassword(password) {
-      return password === this.password;
-    }
-    
-    consultarSaldo() {
-      return this.saldo;
-    }
-    
-    ingresarMonto(monto) {
-      if (this.saldo + monto > 990) {
-        return false;
-      } else {
-        this.saldo += monto;
-        return true;
-      }
-    }
-    
-    retirarMonto(monto) {
-      if (this.saldo - monto < 10) {
-        return false;
-      } else {
-        this.saldo -= monto;
-        return true;
-      }
-    }
-  }
-  
-  var cuentas = [
-    new Cuenta("Persona 1", 200, "1234"),
-    new Cuenta("Persona 2", 290, "5678"),
-    new Cuenta("Persona 3", 67, "9012")
-  ];
-  
-  
-  function cajero() {
-    var cuentaSeleccionada = prompt("Ingresa el nombre de la cuenta con la que deseas interactuar (Persona 1, Persona 2, Persona 3)");
-    var cuenta = cuentas.find(cuenta => cuenta.nombre === cuentaSeleccionada);
-    
-    if (!cuenta) {
-      alert("Cuenta no encontrada");
-      return;
-    }
-    
-    var password = prompt("Ingresa el password de la cuenta");
-    
-    if (!cuenta.validarPassword(password)) {
-      alert("Password incorrecto");
-      return;
-    }
-    
-    var opcion = prompt("Selecciona una opción:\n1. Consultar saldo\n2. Ingresar monto\n3. Retirar monto");
-    
-    switch(opcion) {
-      case "1":
-        alert("Tu saldo actual es de $" + cuenta.consultarSaldo());
-        break;
-      case "2":
-        var monto = parseFloat(prompt("Ingresa el monto a ingresar"));
-        if (!cuenta.ingresarMonto(monto)) {
-          alert("No puedes tener más de $990 en tu cuenta");
-        } else {
-          alert("Has ingresado $" + monto + ". Tu nuevo saldo es de $" + cuenta.consultarSaldo());
-        }
-        break;
-      case "3":
-        var monto = parseFloat(prompt("Ingresa el monto a retirar"));
-        if (!cuenta.retirarMonto(monto)) {
-          alert("No puedes tener menos de $10 en tu cuenta");
-        } else {
-          alert("Has retirado $" + monto + ". Tu nuevo saldo es de $" + cuenta.consultarSaldo());
-        }
-        break;
-      default:
-        alert("Opción inválida");
-        break;
-    }
-  }
-  
-  cajero();*/
 
   //************************************************************************************* */
 
